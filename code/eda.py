@@ -1,34 +1,7 @@
-import pandas as pd
+import functions as f
 import numpy as np
-import statistics
 import matplotlib.pyplot as plt
-
-FIGURE_DIRECTORY = '../fig/'
-FIGURE_DPI = 600
-
-def create_df_sas(link, cols):
-    '''
-    @param link: string for link to read data from XPORT or SAS7BDAT files
-    @param cols: list of strings representing names for columns
-    '''
-    df = pd.read_sas(link)
-    df.columns = cols
-
-    return df
-
-def merge_dfs(df1, df2, col):
-    '''
-    @param df1, df2: DataFrames to merge
-    @param on: string of column to merge on
-    '''
-
-    return pd.merge(df1, df2, on=col)
-
-def save_figure(path):
-    '''
-    @param path: string of path for the created figure
-    '''
-    plt.savefig(FIGURE_DIRECTORY+path, dpi=FIGURE_DPI)
+import statistics
 
 ### Initial DataFrame Creation
 # Create DataFrame for Demographic data
@@ -80,7 +53,7 @@ demo_cols = ['ID',
              'Annual household income',
              'Annual family income',
              'Ratio of family income to poverty']
-demo_df = create_df_sas(demo_link, demo_cols)
+demo_df = f.create_df_sas(demo_link, demo_cols)
 # print(demo_df.head(5))
 
 # Create DataFrame for Occupation and Income
@@ -114,13 +87,13 @@ inc_cols = ['ID',
             'Family has savings more than $20,000?',
             'Total savings/cash assets for the family',
             'How do you get to the grocery store?']
-occ_df = create_df_sas(occ_link, occ_cols)
-inc_df = create_df_sas(inc_link, inc_cols)
-inc_occ_df = merge_dfs(inc_df, occ_df, 'ID')
+occ_df = f.create_df_sas(occ_link, occ_cols)
+inc_df = f.create_df_sas(inc_link, inc_cols)
+inc_occ_df = f.merge_dfs(inc_df, occ_df, 'ID')
 # print(inc_occ_df.head(5))
 
 # Merge the Demographic, Income, and Occupation DataFrames for potential features
-X_df = merge_dfs(demo_df, inc_occ_df, 'ID')
+X_df = f.merge_dfs(demo_df, inc_occ_df, 'ID')
 # print(X_df.head(5))
 print('Successfully created potential features DataFrame')
 
@@ -136,7 +109,7 @@ healthstat_cols = ['ID',
                    'How long ago was last blood donation?',
                    'Blood ever tested for HIV virus?',
                    'Source of Health Status Data']
-healthstat_df = create_df_sas(healthstat_link, healthstat_cols)
+healthstat_df = f.create_df_sas(healthstat_link, healthstat_cols)
 # print(healthstat_df.head(5))
 
 # Create DataFrame for body measures
@@ -163,11 +136,11 @@ body_cols = ['ID',
              'Waist Circumference Comment',
              'Hip Circumference (cm)',
              'Hip Circumference Comment']
-body_df = create_df_sas(body_link, body_cols)
+body_df = f.create_df_sas(body_link, body_cols)
 # print(body_df.head(5))
 
 # Merge the health status and body measure DataFrames for potential labels
-y_df = merge_dfs(healthstat_df, body_df, 'ID')
+y_df = f.merge_dfs(healthstat_df, body_df, 'ID')
 # print(y_df.head(5))
 
 # Create a DataFrame for our desired labels
@@ -189,8 +162,8 @@ features_df = X_df[features]
 # print(features_df.head(5))
 
 # Combine our features and labels into a single DataFrame
-df = merge_dfs(features_df, labels_df, 'ID')
-print(df.head(5))
+df = f.merge_dfs(features_df, labels_df, 'ID')
+# print(df.head(5))
 print('Successfully merged features and labels into one DataFrame')
 
 ### Exploratory Data Analysis on Initial DataFrames
@@ -219,7 +192,7 @@ plt.axvline(x=30, color = 'red')
 plt.xlabel("BMI")
 plt.ylabel("Perceived Health (1 Best-5 Worst)")
 plt.title("BMI vs Perceived Health")
-save_figure('bmi_ghc.png')
+f.save_figure('bmi_ghc.png')
 print('Successfully created ../fig/bmi_ghc.png')
 # plt.show()
 
@@ -231,7 +204,7 @@ plt.axvline(x=30, color = 'red')
 plt.title("BMI Histogram")
 plt.xlabel("bmi")
 plt.ylabel("count")
-save_figure('bmi_histogram.png')
+f.save_figure('bmi_histogram.png')
 print('Successfully created ../fig/bmi_histogram.png')
 # plt.show()
 
@@ -240,6 +213,6 @@ _ = plt.hist(a, bins='auto')  # arguments are passed to np.histogram
 plt.title("Perceived Health Histogram")
 plt.xlabel("general health condition")
 plt.ylabel("count")
-save_figure('ghc_histogram.png')
+f.save_figure('ghc_histogram.png')
 print('Successfully created ../fig/ghc_histogram.png')
 # plt.show()
