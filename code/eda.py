@@ -166,6 +166,10 @@ df = f.merge_dfs(features_df, labels_df, 'ID')
 # print(df.head(5))
 print('Successfully merged features and labels into one DataFrame')
 
+# Generate a csv of the uncleaned data
+f.generate_csv(df, 'uncleaned_data.csv', True, True, ',', 'w')
+print('Successfully created ../data/uncleaned_data.csv')
+
 ### Exploratory Data Analysis on Initial DataFrames
 ## Relationship between BMI and General Health Condition
 new_ydf = y_df[['Body Mass Index (kg/m**2)','General health condition']]
