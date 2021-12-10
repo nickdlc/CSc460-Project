@@ -167,7 +167,7 @@ df = f.merge_dfs(features_df, labels_df, 'ID')
 print('Successfully merged features and labels into one DataFrame')
 
 # Generate a csv of the uncleaned data
-f.generate_csv(df, 'uncleaned_data.csv', True, True, ',', 'w')
+f.generate_csv(df, 'uncleaned_data.csv', True, False, ',', 'w')
 print('Successfully created ../data/uncleaned_data.csv')
 
 ### Exploratory Data Analysis on Initial DataFrames
