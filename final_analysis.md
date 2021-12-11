@@ -35,6 +35,6 @@ We encountered a few challenges for this assignment. One challenge we had was ma
 Another challenge we encountered was for cleaning the data. For the features we decided on, there were some inputs that didn't show up as NaN, such as "Refused" or "Don't Know" values, that we needed to account for. In most cases, we decided to impute NaN values with either the mode or median of the set. The primary issue, however, was cleaning the family income field. We wanted to impute NaN values with the median of this column, but the values from the data dictionary were not linear. For example, the code 13 represented an income of "Under $20,000" while the code of 14 represented "$75,000 - $99,000". We decided to combine the codes of 1-4, which represented $0 to $20,000, with the under $20,000 code, deleted the code 12 of over $20,000, and set all missing or don't know values to NaN. We then relabeled all of the codes from 0 to 15 in order of higher income. This allowed us to calculate the median and impute all NaN's with this value.
 
 ### Contributions
-- Nicholas De La Cruz: Data cleaning
-- Kareem Ibrahim: Data cleaning
-- Gene Lam: Exploratory data analysis, ROC, and PCA
+- Nicholas De La Cruz: Data cleaning, classification, linear regression
+- Kareem Ibrahim: Data cleaning, improving the model
+- Gene Lam: Exploratory data analysis, confusion matrix, ROC, and PCA
