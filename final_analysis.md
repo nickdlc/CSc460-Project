@@ -34,6 +34,6 @@
 In our preliminary analysis, the challenges we faced were mapping the column names from their keys to their definitions, and cleaning the data because we were working with a large dataset. After we chose a manageable amount of feature vectors to work with, this was no longer a problem. Our biggest problem during the Final Analysis was improving our machine learning model. We performed a classification using decision tree and linear regression. However, the initial accuracy for both was around 30% and 6% respectively. We tried a bunch of techniques to improve our models.
 
 ### Contributions
-- Nicholas De La Cruz: Data cleaning, classification, KFold, linear regression
-- Kareem Ibrahim: Data cleaning, improving the model, cross-validation
+- Nicholas De La Cruz: Data cleaning, classification, KFold, cross-validation, linear regression
+- Kareem Ibrahim: Data cleaning, improving the model, KFold, cross-validation
 - Gene Lam: Exploratory data analysis, confusion matrix, ROC, and PCA
