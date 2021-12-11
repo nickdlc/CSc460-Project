@@ -1,4 +1,4 @@
-# Project Title
+# Forecasting Your General Well-Being
 
 ### Group Members
 - Nicholas De La Cruz
@@ -6,9 +6,6 @@
 - Gene Lam
 
 ### Repository Structure
-List each file and what it's purpose it. Make sure you indicate where your data cleaning code and data dictionary are! 
-
-For example:
 - `data`
   - `uncleaned_data.csv`: The uncleaned data from our exploratory analysis
   - `cleaned_data.csv`: The data after cleaning
@@ -19,6 +16,7 @@ For example:
   - `build_dtree.py`: Builds the decision tree based on the data from `../data/cleaned_data.csv`
   - `functions.py`: Contains functions used throughout the entire project
 - `Full_Analysis.ipynb`: Contains our EDA, data cleaning, and initial models. All updates since the initial preliminary analysis are also included in here.
+- 
 
 ### Challenges (Optional)
 Describe any challenges you encountered.
