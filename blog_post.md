@@ -67,7 +67,5 @@ Next, we used GHC as a feature to try and describe BMI through a linear regressi
 
 The above graph shows the mapping of GHC to BMI. As can be seen, GHC is distributed almost evenly across the different BMI ranges, indicating that there may be little correlation between GHC and BMI. Also note how GHC is not a continous feature as the labels 1 through 5 are categories. We were unlikely to find a method to better predict BMI through GHC so we did not attempt to improve it further.
 
-### Challenges
-
 ## Conclusion
-Next time let's pick better features Might be better to perform this computation as a binary or ternary category set.
+The biggest implication we have seen so far from this model is simple: your demographic data is an unlikely indicator on you are currently feeling! While our model could have been improved through a better list of features and a better focus on feature engineering, we can conclude that demographic data such as income, gender, race etc., does not necessarily dictate how someone may feel about their well-being. In other words, money (and a whole bunch of other features), does not buy you well-being!
