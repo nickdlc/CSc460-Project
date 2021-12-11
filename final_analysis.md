@@ -35,5 +35,5 @@ In our preliminary analysis, the challenges we faced were mapping the column nam
 
 ### Contributions
 - Nicholas De La Cruz: Data cleaning, classification, KFold, cross-validation, linear regression, translating main notebook into scripts
-- Kareem Ibrahim: Data cleaning, improving the model, KFold, cross-validation
+- Kareem Ibrahim: Data cleaning, improving the model, KFold, cross-validation, blog post
 - Gene Lam: Exploratory data analysis, confusion matrix, ROC, and PCA
