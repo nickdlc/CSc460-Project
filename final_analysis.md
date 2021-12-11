@@ -16,19 +16,19 @@
   - `build_dtree.py`: Builds the decision tree based on the data from `../data/cleaned_data.csv`
   - `functions.py`: Contains functions used throughout the entire project
 - `fig`
-  - `bmi_ghc.png`: Contains all of the code for our exploratory analysis
-  - `bmi_histogram.png`: Cleans our data and exports it as a CSV
-  - `confusion_matrix.png`: Builds the decision tree based on the da
-  - `ghc_histogram.png`: Contains functions used throughout the entire project
-  - `normalized_confusion_matrix.png`: Contains al
-  - `pca_cumvariance.png`: Contains all of the code for our exploratory analysis
-  - `pca_variance.png`: Cleans our data and exports it as a CSV
-  - `roc_curve.png`: Builds the decision tree based on the da
-- `Full_Analysis.ipynb`: Contains our EDA, data cleaning, and initial models. All updates since the initial preliminary analysis are also included in here.
-- `README.md`: Contains our EDA, data cleaning, and initial models. All updat
-- `blog_post.md`: Contains our EDA, data cleaning, and initial models. All updat
-- `final_analysis.md`: Contains our EDA, data cleaning, and initial models. All updat
-- `preliminary_analysis.md`: Contains our EDA, data cleaning, and initial models. All updat
+  - `bmi_ghc.png`: BMI vs GHC scatterplot
+  - `bmi_histogram.png`: BMI histogram
+  - `confusion_matrix.png`: Confusion matrix of classification
+  - `ghc_histogram.png`: GHC histogram
+  - `normalized_confusion_matrix.png`: Normalized confusion matrix of classification
+  - `pca_cumvariance.png`: PCA cumulative variance graph
+  - `pca_variance.png`: PCA variance graph
+  - `roc_curve.png`: ROC curve 
+- `Full_Analysis.ipynb`: Contains our EDA, Data Cleaning, and Initial Models. All updates since the initial preliminary analysis are also included in here.
+- `README.md`: README file
+- `blog_post.md`: Blog post with Motivation, Data, Evaluation, and Future Work
+- `final_analysis.md`: Final analysis with Repository Structure, Challenges, Contributions
+- `preliminary_analysis.md`: Preliminary analysis with Data Cleaning Code, Exploratory Analysis, Challenges, Future Work, and Contributions
 
 ### Challenges (Optional)
 Describe any challenges you encountered.
@@ -36,4 +36,4 @@ Describe any challenges you encountered.
 ### Contributions
 - Nicholas De La Cruz: Data cleaning
 - Kareem Ibrahim: Data cleaning
-- Gene Lam: Exploratory data analysis
+- Gene Lam: Exploratory data analysis, ROC, and PCA
