@@ -39,6 +39,7 @@ Now that we have chosen and cleaned the features we wished to use, we can finall
 ### GHC: Decision Tree
 
 We decided to use a decision tree classification model to fit our features and labels. Before fitting our data, we normalized the features to between 0 and 1 to avoid any high outliers. We decided to use 33% of the data for testing. Using all of our initial features, the model returned an accuracy, precision, recall, and F1 score of about 36.6%. After some tinkering, we decided to drop the income feature, which gave us a better accuracy score of about 41.5%.
+
 ![image](https://user-images.githubusercontent.com/12586551/145662269-77e6af4f-7b45-4037-9b05-9073200e0c7d.png)
 
 This image shows the confusion matrix heat map of values that our model predicted versus the actual data points. The most immediate thing we can see here is how most of the data ponts, actual and predicted, are clustered around 2-4. We can see see that for most actual values of 2 and 4, the model was likely to predict 3. This makes sense logically as most people would likely see themselves as average. Also, there does not exist an objective method by the surveyers in this study to determine their health condition, therefore the data is likely to be heavily skewed towards the middle. 
