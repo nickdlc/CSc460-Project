@@ -16,7 +16,8 @@ For example:
 - `code`
   - `eda.py`: Contains all of the code for our exploratory analysis
   - `data_cleaning.py`: Cleans our data and exports it as a CSV in `../data/cleaned_data.csv`
-  - `build_dtree.py`: Builds the decision tree based on the data from `cleaned_data.csv`
+  - `build_dtree.py`: Builds the decision tree based on the data from `../data/cleaned_data.csv`
+  - `functions.py`: Contains functions used throughout the entire project
 - `Full_Analysis.ipynb`: Contains our EDA, data cleaning, and initial models. All updates since the initial preliminary analysis are also included in here.
 
 ### Challenges (Optional)
