@@ -36,5 +36,5 @@ Another challenge we encountered was for cleaning the data. For the features we 
 
 ### Contributions
 - Nicholas De La Cruz: Data cleaning, classification, linear regression
-- Kareem Ibrahim: Data cleaning, improving the model
+- Kareem Ibrahim: Data cleaning, improving the model, cross-validation, KFold
 - Gene Lam: Exploratory data analysis, confusion matrix, ROC, and PCA
