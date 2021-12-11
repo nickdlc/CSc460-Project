@@ -15,7 +15,7 @@ When looking at these datasets, the first item we needed to address was decipher
 
 ## Data Cleaning and Features
 
-With our main question in mind, we now needed to decide what we wanted to predict. After a thorough overview of the datasets we had chosen, we decided we should predict the General health Condition (GHC) field in the Current Health Status dataset using a classification model. The features, alongside their column names, and cleaning methods we decided to use to predict GHC are as follows:
+With our main question in mind, we now needed to decide what we wanted to predict. After a thorough overview of the datasets we had chosen, we decided we should predict the General health Condition (GHC) field in the Current Health Status dataset using a classification model. This label is scaled from 1-5 with 1 being excellent health and 5 being poor health. The features, alongside their column names, and cleaning methods we decided to use to predict GHC are as follows:
 * Gender: *HH ref person\'s gender*
   * This column had no null gender values so we did not to clean this feature.
 * Age: *HH ref person\'s age in years*
@@ -35,12 +35,25 @@ For GHC, since this is the category we want to predict, we dropped all of the N/
 
 ## Model Evaluation
 
+Now that we have chosen and cleaned the features we wished to use, we can finally start fitting our model.
+### GHC: Decision Tree
+
+We decided to use a decision tree classification model to fit our features and labels. Before fitting our data, we normalized the features to between 0 and 1 to avoid any high outliers. Using all of our initial features, the model returned an accuracy, precision, recall, and F1 score of about 36.6%.
+![image](https://user-images.githubusercontent.com/12586551/145662269-77e6af4f-7b45-4037-9b05-9073200e0c7d.png)
+This image shows the confusion matrix heat map of values that our model predicted versus the actual data points. The most immediate thing we can see here is how most of the data ponts, actual and predicted, are clustered around 2-4. We can see see that for most actual values of 2 and 4, the model was likely to predict 3. This makes sense logically as most people would likely see themselves as average. Also, there does not exist an objective method by the surveyers in this study to determine their health condition, therefore the data is likely to be heavily skewed towards the middle. 
+
+We then ran this model on 16 subsets of our feature set to see which categories the mdoel excels on and which it performs poorly with (see these category filters at the bottom of `Full_Analysis.md`). Our model performs well on Non-Hispanic Whites (43.7%) and females (41.9%) and poorly with Non-Hispanic Asians (34.1%) and people with incomes between $35,000 and $65,000 (35.2%).
+
+### GHC: Cross-Validation
+
+To possibly improve our accuracy score, we attempted 2 cross-validation techniques: Graph Search and K-Fold.
+
+For our graph search, we tweaked 3 hyper-paramerters: max_depth, max_features, and min_samples_split. Our cross-validation model found that a max depth of 5, max features of 'auto' (which is the square root of total features we have), and a min. sample split of 3. This improved our accuracy to around 42%. With our K-Fold cross-validation, we noticed with higher folds, the higher the accuracy of our model became. So we decided to use 3000 folds, a little more than half of our total features, which gave us an accuracy of 41.1%, which is actually a decrease in our model performance.
+
+### Linear Regression: BMI
+
 Percieved health may vary.
-### GHC
-### BMI
-### Accuracy
 ### Challenges
-### Cross-Validation
 
 ## Next Steps
-Next time let's pick better features
+Next time let's pick better features Might be better to perform this computation as a binary or ternary category set.
