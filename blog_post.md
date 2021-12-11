@@ -38,8 +38,9 @@ For GHC, since this is the category we want to predict, we dropped all of the N/
 Now that we have chosen and cleaned the features we wished to use, we can finally start fitting our model.
 ### GHC: Decision Tree
 
-We decided to use a decision tree classification model to fit our features and labels. Before fitting our data, we normalized the features to between 0 and 1 to avoid any high outliers. Using all of our initial features, the model returned an accuracy, precision, recall, and F1 score of about 36.6%.
+We decided to use a decision tree classification model to fit our features and labels. Before fitting our data, we normalized the features to between 0 and 1 to avoid any high outliers. We decided to use 33% of the data for testing. Using all of our initial features, the model returned an accuracy, precision, recall, and F1 score of about 36.6%. After some tinkering, we decided to drop the income feature, which gave us a better accuracy score of about 41.5%.
 ![image](https://user-images.githubusercontent.com/12586551/145662269-77e6af4f-7b45-4037-9b05-9073200e0c7d.png)
+
 This image shows the confusion matrix heat map of values that our model predicted versus the actual data points. The most immediate thing we can see here is how most of the data ponts, actual and predicted, are clustered around 2-4. We can see see that for most actual values of 2 and 4, the model was likely to predict 3. This makes sense logically as most people would likely see themselves as average. Also, there does not exist an objective method by the surveyers in this study to determine their health condition, therefore the data is likely to be heavily skewed towards the middle. 
 
 We then ran this model on 16 subsets of our feature set to see which categories the mdoel excels on and which it performs poorly with (see these category filters at the bottom of `Full_Analysis.md`). Our model performs well on Non-Hispanic Whites (43.7%) and females (41.9%) and poorly with Non-Hispanic Asians (34.1%) and people with incomes between $35,000 and $65,000 (35.2%).
@@ -50,10 +51,23 @@ To possibly improve our accuracy score, we attempted 2 cross-validation techniqu
 
 For our graph search, we tweaked 3 hyper-paramerters: max_depth, max_features, and min_samples_split. Our cross-validation model found that a max depth of 5, max features of 'auto' (which is the square root of total features we have), and a min. sample split of 3. This improved our accuracy to around 42%. With our K-Fold cross-validation, we noticed with higher folds, the higher the accuracy of our model became. So we decided to use 3000 folds, a little more than half of our total features, which gave us an accuracy of 41.1%, which is actually a decrease in our model performance.
 
-### Linear Regression: BMI
+The following is our ROC-curves for each of the 5 well-being classes:
 
-Percieved health may vary.
+![image](https://user-images.githubusercontent.com/12586551/145663650-eedf81fd-4023-4234-8104-e3b939c7a79e.png)
+
+### Results
+
+The reason our model did not perform as well as it could of is most likely due to the features and feature engineering we decided to use. The features we decided to use are mostly based on demographic data that may not prove to be useful in determining someone's well-being. For example, by dropping the income category, we were able to improve our performance by approximately 5%. A future model should take more measured direct health information into consideration. Secondly, we may have recieved better luck with performing a binary classification, for example, percieved good or bad health. While this may work better to improve our accuracy, it still does not address how the majority of the data points are in the average 3 category, meaning whichever classification, good or bad, has the 3 category, the model would likely be skewed more to that side. Lastly, GHC is a self-reported attribute that has no current way of being measured. People themselves are likely not the best source of information to consider their own health objectively, hence the commonality the 3 category. A future model would be better off trying to predict a different label that is less subjective.
+
+### BMI: Linear Regression
+
+Next, we used GHC as a feature to try and describe BMI through a linear regression. This model did not predict BMI through GHC very well as the model was only 6.3% accurate.
+
+![image](https://user-images.githubusercontent.com/12586551/145664232-f4d748bc-dbfc-497b-ab89-a02f1d7e0b57.png)
+
+The above graph shows the mapping of GHC to BMI. As can be seen, GHC is distributed almost evenly across the different BMI ranges, indicating that there may be little correlation between GHC and BMI. Also note how GHC is not a continous feature as the labels 1 through 5 are categories. We were unlikely to find a method to better predict BMI through GHC so we did not attempt to improve it further.
+
 ### Challenges
 
-## Next Steps
+## Conclusion
 Next time let's pick better features Might be better to perform this computation as a binary or ternary category set.
